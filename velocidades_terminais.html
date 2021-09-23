@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TÍTULO BONITINHO DO TCC</title>
+
+    <link rel="stylesheet" href="fonts/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/velocidades_terminais.css" />
+    <link rel="shortcut icon" href="images/ufc_ico.ico" />
+    <script src="js/velocidades_terminais.js" type="text/javascript"></script>
+    <script src="js/conversoes.js" type="text/javascript"></script>
+  
+</head>
+
+<body>
+    <div class="menu">
+        <img src="images/logo_UFC_horizontal.svg">
+        
+        <input type="checkbox" id="checkbox-menu">
+        <label class="label-menu" for="checkbox-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <ul>
+            <a>LINK 1</a>
+            <a>LINK 1</a>
+            <a>LINK 1</a> 
+        </ul>
+    </div>
+    
+    <main class="calculadoras">
+        <h1>Calculadora de velocidades terminais</h1><br/>
+        <p><b>Diâmetro da partícula :</b></p>
+        <form>
+        <input type="number" name="diametro" id="d_particula" value="" placeholder="">
+        <select id="d_particula_unit">
+            <option value="microm">µm</option>
+            <option value="mm">mm</option>
+            <option value="cm">cm</option>
+            <option value="m">m</option>
+            <option value="in">in</option>
+            <option value="ft">ft</option>
+        </select>  
+        </form>
+
+        <p><b>Massa específica do fluido :</b></p>
+        <form>
+        <input type="number" id="rho_fluido" value="" placeholder="">
+        <select id="rho_fluido_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>    
+        </form>
+
+        <p><b>Viscosidade do fluido :</b></p>
+        <form>
+        <input type="number" id="viscosidade" value="" placeholder="">
+        <select id="viscosidade_unit">
+            <option value="Pa.s">Pa.s</option>
+            <option value="Poise">Poise (P)</option>
+            <option value="Centipoise">Centipoise (cP)</option>
+        </select>    
+        </form>
+        
+        <p><b>Massa específica da partícula :</b></p>
+        <form>
+        <input type="number" id="rho_particula" value="" placeholder="">
+        <select id="rho_particula_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>    
+        </form>
+
+        <p><b>Número de iterações :</b></p>
+        <form>
+        <input type="number" min="1" step="1" id="n_iteracoes" value="" placeholder="">    
+        </form>
+        
+        <button type="submit" NAME="stokes" onClick="velocidades_terminais()">Calcular</button>
+        
+        <div class="resultados stokes" >
+            <h1>Regime de Stokes (0&nbsp;&lt;&nbsp;Re<sub>p</sub>&nbsp;&lt;&nbsp;1)</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p</sub> : </b><a id="reynolds_stokes"></a></p>    
+                <p><b>V<sub>t</sub> : </b><a id="vt_stokes"></a></p>
+            </div>
+        </div>
+
+        <div class="resultados allen" >
+            <h1>Regime Intermediário - Correlação de Allen (1&nbsp;&lt;&nbsp;Re<sub>p</sub>&nbsp;&lt;&nbsp;500)</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p</sub> : </b><a id="reynolds_allen"></a></p>
+                <p><b>V<sub>t</sub> : </b><a id="vt_allen"></a></p>
+            </div>
+        </div>
+
+        <div class="resultados klyachko" >
+            <h1>Regime Intermediário - Correlação de Klyachko (3&nbsp;&lt;&nbsp;Re<sub>p</sub>&nbsp;&lt;&nbsp;400)</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p</sub> : </b><a id="reynolds_klyachko"></a></p>
+                <p><b>V<sub>t</sub> : </b><a id="vt_klyachko"></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados langmuir_blodgett" >
+            <h1>Regime Intermediário - Correlação de Langmuir e Blodgett (1&nbsp;&lt;&nbsp;Re<sub>p</sub>&nbsp;&lt;&nbsp;100) </h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p</sub> : </b><a id="reynolds_langmuir_blodgett"></a></p>
+                <p><b>V<sub>t</sub> : </b><a id="vt_langmuir_blodgett"></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados newton" >
+            <h1>Regime de Newton (500&nbsp;&lt;&nbsp;Re<sub>p</sub>&nbsp;&lt;&nbsp;2*10<sup>5</sup>)</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p</sub> : </b><a id="reynolds_newton"></a></p>
+                <p><b>V<sub>t</sub> : </b><a id="vt_newton"></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados turbulento" >
+            <h1>Regime Turbulento (Re<sub>p</sub>&nbsp;&gt;&nbsp;2*10<sup>5</sup>)</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p</sub> : </b><a id="reynolds_turbulento"></a></p>
+                <p><b>V<sub>t</sub> : </b><a id="vt_turbulento"></a></p>
+            </div>
+        </div>
+    
+    
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TÍTULO BONITINHO DO TCC</title>
+
+    <link rel="stylesheet" href="fonts/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="shortcut icon" href="images/ufc_ico.ico" />
+    <link href="css/projeto_ciclone.css" type="text/css" rel='stylesheet' />
+
+    <script src="js/calculadora_de_ciclones.js"></script>
+    <script src="js/conversoes.js"></script>
+
+</head>
+
+<body>
+    <div class="menu">
+        <img src="images/logo_UFC_horizontal.svg">
+
+        <input type="checkbox" id="checkbox-menu">
+        <label class="label-menu" for="checkbox-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <ul>
+            <a>LINK 1</a>
+            <a>LINK 1</a>
+            <a>LINK 1</a>
+        </ul>
+    </div>
+
+    <main class="calculadoras">
+        <h1>Análise de eficiência de Ciclones Lapple</h1><br/>
+        <p><b>Diâmetro do ciclone :</b></p>
+        <form>
+        <input type="text" id="D_ciclone" value="" placeholder="">
+        <select id="D_ciclone_unit">
+            <option value="m">m</option>
+            <option value="cm">cm</option>
+            <option value="mm">mm</option>
+            <option value="in">in</option>
+            <option value="ft">ft</option>
+        </select>            
+        </form>
+
+        <p><b>Vazão de Admissão :</p>
+        <form>
+        </b><input type="text" id="vazao" value="" placeholder="">
+        <select id="vazao_unit">
+            <option value="m³/s">m³/s</option>
+            <option value="m³/min">m³/min</option>
+            <option value="m³/h">m³/h</option>
+            <option value="L/s">L/s</option>
+            <option value="L/min">L/min</option>
+            <option value="L/h">L/h</option>
+            <option value="ft³/s">ft³/s</option>
+            <option value="ft³/min">ft³/min</option>
+            <option value="ft³/h">ft³/h</option>
+        </select>            
+        </form>
+
+        <p><b>Massa específica do fluido :</b></p>
+        <form>
+        <input type="text" id="rho_fluido" value="" placeholder="">
+        <select id="rho_fluido_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>            
+        </form>
+
+        <p><b>Viscosidade do fluido :</b></p> 
+        <form>
+        <input type="text" id="viscosidade" value="" placeholder="">
+        <select id="viscosidade_unit">
+            <option value="Pa.s">Pa.s</option>
+            <option value="Poise">Poise (P)</option>
+            <option value="Centipoise">Centipoise (cP)</option>
+        </select>            
+        </form>
+
+        <p><b>Massa específica da partícula :</b></p>
+        <form>
+        <input type="text" id="rho_particula" value="" placeholder="">
+        <select id="rho_particula_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>            
+        </form>
+
+        <p><b>Análise Granulométrica do Particulado: </b></p>
+
+        <button type="submit" onclick="inserirLinhaTabela()"><i class="fa fa-plus-square" aria-hidden="true"></i>
+            Inserir Linha</button>
+        <button type="submit" onclick="RemoverLinhaTabela()"><i class="fa fa-minus-square" aria-hidden="true"></i>
+            Remover Linha</button>
+
+        <p>
+        <table id="dp_perc">
+            <tr>
+                <td>
+                    <span>Diâmetro da Partícula</span>
+                    <select id="dp_unit">
+                        <option value="microm">µm</option>
+                        <option value="mm">mm</option>
+                        <option value="m">m</option>
+                    </select>
+                </td>
+                <td>
+                    <span>% Acumulado > dp</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text">
+                </td>
+                <td>
+                    <input type="text">
+                </td>
+            </tr>
+        </table>
+        </p>
+
+        <button type="submit" NAME="calculate" onClick="tem_o_ciclone()">Calcular</button>
+        <button type="submit" NAME="erase" onClick="erase()">Apagar Tudo</button>
+
+        <p><b>Resultados :</b></p>
+        <p>A eficiência global do ciclone é: <a id="eficiencia_ciclone"></a></p>
+        <p>A perda de carga do ciclone é: <a id="perda_de_carga"></a></p><br/>
+        <p><b>Dimensões e composições das correntes :</b></p>
+        <p id="composicao_fundo"></p>
+        <p id="composicao_topo"></p>
+    </main>
+
+</body>
+
+</html>
