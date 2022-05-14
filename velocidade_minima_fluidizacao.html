@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velocidade de minima fluidização aplicando a simplificação de Wen e Yu na equação de Ergun</title>
+
+    <link rel="stylesheet" href="fonts/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/projeto_ciclone.css" />
+    <link rel="shortcut icon" href="images/ufc_ico.ico" />
+    <script src="js/escoamento_em_meios_porosos.js" type="text/javascript"></script>
+    <script src="js/conversoes.js" type="text/javascript"></script>
+    <script src="js/p5.min.js" type="text/javascript"></script>
+  
+</head>
+
+<body>
+    <div class="menu">
+        <img src="images/logo_UFC_horizontal.svg">
+        
+        <input type="checkbox" id="checkbox-menu">
+        <label class="label-menu" for="checkbox-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <ul>
+            <a>LINK 1</a>
+            <a>LINK 1</a>
+            <a>LINK 1</a> 
+        </ul>
+    </div>
+    
+    <main class="calculadoras">
+        <h1>Velocidade de minima fluidização aplicando a simplificação de Wen e Yu na equação de Ergun</h1><br/>
+        <p><b>Diâmetro médio das partículas no leito :</b></p>
+        <form>
+        <input type="number" name="diametro" id="d_particula" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="d_particula_fator" value="" placeholder="0" step="1" class="fator">
+        <select id="d_particula_unit">
+            <option value="microm">µm</option>
+            <option value="mm">mm</option>
+            <option value="cm">cm</option>
+            <option value="m">m</option>
+            <option value="in">in</option>
+            <option value="ft">ft</option>
+        </select>  
+        </form>
+
+        <p><b>Massa específica das partículas no leito :</b></p>
+        <form>
+        <input type="number" id="rho_particula" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="rho_particula_fator" value="" placeholder="0" step="1" class="fator">
+        <select id="rho_particula_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>    
+        </form>
+
+        <p><b>Massa específica do fluido :</b></p>
+        <form>
+        <input type="number" id="rho_fluido" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="rho_fluido_fator" value="" placeholder="0" step="1" class="fator">
+        <select id="rho_fluido_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>    
+        </form>
+
+        <p><b>Viscosidade do fluido :</b></p>
+        <form>
+        <input type="number" id="viscosidade" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="viscosidade_fator" value="" placeholder="0" step="1" class="fator">
+        <select id="viscosidade_unit">
+            <option value="Pa.s">Pa.s</option>
+            <option value="Poise">Poise (P)</option>
+            <option value="Centipoise">Centipoise (cP)</option>
+        </select>    
+        </form>
+        
+        <button class="azul" type="submit" NAME="stokes" onClick="leito_fluidizado()"><i class="fa-solid fa-calculator"></i> Calcular</button>
+        
+        <p><b>Resultados :</b></p>
+        <p>O valor de Re<sub>p</sub> no momento da fluidização é : <a id="Rep_mf"></a></p>
+        <p>A velocidade de mínima fluidização q<sub>mf</sub> é : <a id="q_mf"></a></p>   
+    </main>
+</body>
+
+</html>

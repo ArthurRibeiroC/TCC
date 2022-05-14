@@ -1,0 +1,166 @@
+#dp_perc span {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+/* Botões */
+.verde {
+  background-color: rgb(191, 255, 216) !important;
+  color: rgb(0, 116, 25) !important;
+  border: 1px solid rgb(0, 207, 45) !important;
+  font-weight: bold !important;
+}
+
+.vermelho {
+  background-color: rgb(255, 191, 191) !important;
+  color: rgb(116, 0, 0) !important;
+  border: 1px solid rgb(231, 151, 151) !important;
+  font-weight: bold !important;
+}
+
+.azul {
+  background-color: rgb(191, 237, 255) !important;
+  color: rgb(0, 114, 143) !important;
+  border: 1px solid rgb(101, 178, 209) !important;
+  font-weight: bold !important;
+}
+
+.cinza {
+  background-color: #dfdfdf !important;
+  color: #555555 !important;
+  border: 1px solid #bfbfbf !important;
+  font-weight: bold !important;
+}
+
+.esquerda {
+  width: calc(50% - 5px) !important;
+  float: left !important;
+}
+
+.direita {
+  width: calc(50% - 5px) !important;
+  float: right !important;
+}
+
+/* Resultados */
+#eficiencia_ciclone,
+#perda_de_carga,
+#vazao_calc {
+  color: black !important;
+  font-weight: bold;
+}
+
+#dimensoes,
+#composicao_fundo,
+#composicao_topo,
+#dp_perc,
+#dados_filtro {
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  background-color: rgb(236, 236, 236);
+}
+
+#dimensoes table,
+#composicao_fundo table,
+#composicao_topo table,
+#dp_perc,
+#dados_filtro {
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  border-spacing: 10px;
+}
+
+#dimensoes table th,
+#composicao_fundo table th,
+#composicao_topo table th,
+#dp_perc th,
+#dados_filtro th {
+  padding: 10px 20px !important;
+  font-weight: bold;
+}
+
+#dimensoes table tr:nth-of-type(2) td,
+#composicao_fundo table tr:nth-of-type(2) td,
+#composicao_topo table tr:nth-of-type(2) td,
+#dados_filtro table tr:nth-of-type(2) td {
+  padding: 0px 20px 10px 20px !important;
+  font-weight: bold;
+}
+
+#dimensoes table tr:not(:nth-of-type(1), :nth-of-type(2)) td,
+#composicao_fundo table tr:not(:nth-of-type(1), :nth-of-type(2)) td,
+#composicao_topo table tr:not(:nth-of-type(1), :nth-of-type(2)) td,
+#dp_perc input,
+#dados_filtro input {
+  background: white;
+  border: 0px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: left;
+  overflow: hidden;
+}
+
+#dp_perc td,
+#dados_filtro td {
+  width: 50%;
+}
+
+#dp_perc input,
+#dados_filtro input {
+  width: 100%;
+  margin: 0px;
+}
+
+#dp_unit,
+#tempo_unit,
+#vol_filtrado_unit {
+  border-radius: 3px;
+  border: 1px solid #aaa;
+}
+
+@media (max-width: 768px) {
+  main button {
+    width: 100% !important;
+    font-size: 15px !important;
+    float:none;
+  }
+
+  #dimensoes table,
+  #composicao_fundo table,
+  #composicao_topo table,
+  #dados_filtro table {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 612px) {
+  #dp_unit,
+  #tempo_unit,
+  #vol_filtrado_unit {
+    width: 100%;
+    display: block;
+    margin: 5px 0px
+  }  
+
+  #dp_perc span,
+  #dados_filtro span{
+    padding: 0px;
+    display: block;
+    margin: 5px 0px 10px 0px;
+    text-align: center;
+  } 
+
+  main button {
+    font-size: 13px !important;
+    padding: 5px !important;
+  }
+
+  main button i {
+    display: block;
+    width: 100%;
+    margin: 5px;
+  }
+}

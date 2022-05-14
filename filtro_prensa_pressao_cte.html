@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de filtro prensa com &Delta;P constante e torta incompressível</title>
+
+    <link rel="stylesheet" href="fonts/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="shortcut icon" href="images/ufc_ico.ico" />
+    <link href="css/projeto_ciclone.css" type="text/css" rel='stylesheet' />
+
+    <script src="js/calculadora_de_ciclones.js"></script>
+    <script src="js/filtros.js"></script>
+    <script src="js/conversoes.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline@1.0.2/src/chartjs-plugin-trendline.min.js"></script>
+</head>
+
+<body>
+    <div class="menu">
+        <img src="images/logo_UFC_horizontal.svg">
+        
+        <input type="checkbox" id="checkbox-menu">
+        <label class="label-menu" for="checkbox-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <ul>
+            <a>LINK 1</a>
+            <a>LINK 1</a>
+            <a>LINK 1</a> 
+        </ul>
+    </div>
+
+    <main class="calculadoras">
+        <h1>Calculadora de filtro prensa com ΔP Cte e torta incompressível</h1><br/>
+        <p><b>Viscosidade do fluido filtrado :</b></p> 
+        <form>
+        <input type="number" id="viscosidade" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="viscosidade_fator" value="" placeholder="0" step="1" class="fator">
+        <select id="viscosidade_unit">
+            <option value="Pa.s">Pa.s</option>
+            <option value="Poise">Poise (P)</option>
+            <option value="Centipoise">Centipoise (cP)</option>
+        </select>            
+        </form>        
+    
+        <p><b>Área do filtro de projeto :</b></p> 
+        <form>
+        <input type="number" id="area_filtro" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="area_filtro_fator" value="" placeholder="0" step="1" class="fator">
+        <select id="area_filtro_unit">
+            <option value="m²">m²</option>
+            <option value="cm²">cm²</option>
+            <option value="mm²">mm²</option>
+            <option value="ft²">ft²</option>
+        </select>            
+        </form>  
+        
+        <p><b>Queda de pressão :</b></p> 
+        <form>
+        <input type="number" id="pressao" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="pressao_fator" value="" placeholder="0" step="1" class="fator">
+        <select id="pressao_unit">
+            <option value="Pa">Pa</option>
+            <option value="atm">atm</option>
+            <option value="bar">bar</option>
+            <option value="mmHg">mmHg</option>
+            <option value="psi">psi</option>
+            <option value="kgf/cm²">kgf/cm²</option>
+        </select>            
+        </form>  
+
+        <p><b>Concentração na alimentação :</b></p> 
+        <form>
+        <input type="number" id="concentracao" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="concentracao_fator" value="" placeholder="0" step="1" class="fator">
+        <select id="concentracao_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>            
+        </form>  
+
+        
+        <p><b>Dados de volume de filtrado : </b></p>
+
+        <button class="verde esquerda" type="submit" onclick="inserirLinhaTabela('dados_filtro')"><i class="fa fa-plus-square" aria-hidden="true"></i>
+            Inserir Linha</button>
+        <button class="vermelho direita" type="submit" onclick="RemoverLinhaTabela('dados_filtro')"><i class="fa fa-minus-square" aria-hidden="true"></i>
+            Remover Linha</button>
+
+        <p>
+        <table id="dados_filtro" >
+            <tr>
+                <td>
+                    <span>Tempo de filtração</span>
+                    <select id="tempo_unit">
+                        <option value="s">s</option>
+                        <option value="min">min</option>
+                        <option value="h">h</option>
+                    </select>
+                </td>
+                <td>
+                    <span>Volume de filtrado</span>
+                    <select id="vol_filtrado_unit">
+                        <option value="m³">m³</option>
+                        <option value="L">L</option>
+                        <option value="ft³">ft³</option>
+                        <option value="cm³">cm³</option>
+                        <option value="gal">gal</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number">
+                </td>
+                <td>
+                    <input type="number">
+                </td>
+            </tr>
+        </table>
+        </p>
+
+        <button class="azul esquerda" type="submit" NAME="calculate" onClick="calcularFiltroPressaoCte()"><i class="fa-solid fa-calculator"></i> Calcular</button>
+        <button class="cinza direita" type="submit" NAME="erase" onClick="erase()"><i class="fa-solid fa-eraser"></i> Apagar Tudo</button>
+
+        <p><b>Resultados :</b></p>
+        <p>Rm: <a id="Rm"></a></p>
+        <p>&alpha; : <a id="alpha"></a></p><br/>
+        
+        <div id="calculo_filtro_industrial" style="display: none;">
+            <p><b>Plot do gráfico :</b></p>
+            <div id="equacao" style="display: none;">
+                t/V = <a id="eq:a"></a>*V + <a id="eq:b"></a>
+            </div>
+            <canvas id="t/V_V" width="400" height="400"></canvas>
+            <p><b>Área do filtro industrial :</b></p> 
+            <form>
+            <input type="number" id="area_filtro2" value="" placeholder="">
+            <span class="prefixo fator">x 10^</span>
+            <input type="number" id="area_filtro_fator2" value="" placeholder="0" step="1" class="fator">
+            <select id="area_filtro_unit2">
+                <option value="m²">m²</option>
+                <option value="cm²">cm²</option>
+                <option value="mm²">mm²</option>
+                <option value="ft²">ft²</option>
+            </select>            
+            </form>  
+
+            <p><b>Volume de suspensão filtrado :</b></p> 
+            <form>
+            <input type="number" id="volume_filtrado" value="" placeholder="">
+            <span class="prefixo fator">x 10^</span>
+            <input type="number" id="volume_filtrado_fator" value="" placeholder="0" step="1" class="fator">
+            <select id="volume_filtrado_unit">
+                <option value="m³">m³</option>
+                <option value="L">L</option>
+                <option value="cm³">cm³</option>
+                <option value="ft³">ft³</option>
+                <option value="gal">gal</option>
+            </select>            
+            </form>  
+            
+            <button class="azul" type="submit" NAME="calculate" onClick="calcularTempoDeFiltro()"><i class="fa-solid fa-calculator"></i> Calcular</button>
+
+            <div id="resultados_filtro2" style="display: none;">
+                <p><b>Resultados :</b></p>
+                <p>O filtro industrial levará <a id="tempo_filtracao"></a> para concluir a filtração.</p>              
+            </div>
+        </div>
+</main>
+</body>
+
+</html>
