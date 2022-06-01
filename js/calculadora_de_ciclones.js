@@ -378,62 +378,80 @@ function RemoverLinhaTabela(tabela) {
 
 // APAGA TUDO
 function erase() {
-    // Checa se a variável existe
-    if (document.getElementById("D_particula")) {
-        document.getElementById("D_particula").value = null;
-        document.getElementById("D_particula_unit").value = "microm";
-    }
+    // // Checa se a variável existe
+    // if (document.getElementById("D_particula")) {
+    //     document.getElementById("D_particula").value = null;
+    //     document.getElementById("D_particula_unit").value = "microm";
+    // }
 
-    if (document.getElementById("eficiencia_desejada")) {
-        document.getElementById("eficiencia_desejada").value = null;
-    }
+    // if (document.getElementById("eficiencia_desejada")) {
+    //     document.getElementById("eficiencia_desejada").value = null;
+    // }
 
-    if (document.getElementById("velocidade")) {
-        document.getElementById("velocidade").value = null;
-        document.getElementById("velocidade_unit").value = "m/s";
-    }
+    // if (document.getElementById("velocidade")) {
+    //     document.getElementById("velocidade").value = null;
+    //     document.getElementById("velocidade_unit").value = "m/s";
+    // }
 
-    if (document.getElementById("D_ciclone")) {
-        document.getElementById("D_ciclone").value = null;
-        document.getElementById("D_ciclone_unit").value = "m";
-    }
+    // if (document.getElementById("D_ciclone")) {
+    //     document.getElementById("D_ciclone").value = null;
+    //     document.getElementById("D_ciclone_unit").value = "m";
+    // }
 
-    if (document.getElementById("vazao")) {
-        document.getElementById("vazao").value = null;
-        document.getElementById("vazao_unit").value = "m³/s";
-    }
+    // if (document.getElementById("vazao")) {
+    //     document.getElementById("vazao").value = null;
+    //     document.getElementById("vazao_unit").value = "m³/s";
+    // }
 
-    if (document.getElementById("dimensoes")) {
-        document.getElementById("dimensoes").innerHTML = null;
-    }
+    // if (document.getElementById("dimensoes")) {
+    //     document.getElementById("dimensoes").innerHTML = null;
+    // }
 
-    if (document.getElementById("vazao_calc")) {
-        document.getElementById("vazao_calc").innerHTML = null;
-    }
+    // if (document.getElementById("vazao_calc")) {
+    //     document.getElementById("vazao_calc").innerHTML = null;
+    // }
 
-    // Inputs
-    document.getElementById("rho_fluido").value =
-        document.getElementById("viscosidade").value =
-        document.getElementById("rho_particula").value =
-        document.getElementById("eficiencia_ciclone").innerHTML =
-        document.getElementById("perda_de_carga").innerHTML =
-        document.getElementById("composicao_fundo").innerHTML =
-        document.getElementById("dp_perc").rows[1].cells[0].children[0].value =
-        document.getElementById("dp_perc").rows[1].cells[1].children[0].value =
-        document.getElementById("composicao_topo").innerHTML = null;
+    // // Inputs
+    // document.getElementById("rho_fluido").value =
+    //     document.getElementById("viscosidade").value =
+    //     document.getElementById("rho_particula").value =
+    //     document.getElementById("eficiencia_ciclone").innerHTML =
+    //     document.getElementById("perda_de_carga").innerHTML =
+    //     document.getElementById("composicao_fundo").innerHTML =
+    //     document.getElementById("dp_perc").rows[1].cells[0].children[0].value =
+    //     document.getElementById("dp_perc").rows[1].cells[1].children[0].value =
+    //     document.getElementById("composicao_topo").innerHTML = null;
 
-    // Unidades
-    document.getElementById("rho_fluido_unit").value = "kg/m³";
-    document.getElementById("viscosidade_unit").value = "Pa.s";
-    document.getElementById("rho_particula_unit").value = "kg/m³";
-    document.getElementById("dp_unit").value = "microm";
+    // // Unidades
+    // document.getElementById("rho_fluido_unit").value = "kg/m³";
+    // document.getElementById("viscosidade_unit").value = "Pa.s";
+    // document.getElementById("rho_particula_unit").value = "kg/m³";
+    // document.getElementById("dp_unit").value = "microm";
 
-    // Remover tabela dp_perc
-    var numOfRows = document.getElementById("dp_perc").rows.length;
+    // LIMPA A TABELA DA ANALISE DE CICLONES
+    
+    // if (document.getElementById("dp_perc") !== null) {
+    //     for (i = 0; i < document.getElementById("dp_perc").rows.length - 2; i++) {
+    //         RemoverLinhaTabela();
+    //     }
+    // }
+    
+    // // LIMPA A TABELA DOS FILTROS
+    // for (i = 0; i < document.getElementById("dados_filtro").rows.length - 2; i++) {
+    //     RemoverLinhaTabela();
+    // }
 
-    for (i = 0; i < numOfRows - 2; i++) {
-        RemoverLinhaTabela();
-    }
+    // // LIMPA TODOS OS INPUTS
+    // let inputs = document.getElementsByTagName("input");
+
+    // for (i = 0; i < inputs.length; i++) {
+    //     inputs[i].value = "";
+    // };
+
+    // // LIMPA OS RESULTADOS DOS FILTROS
+    // document.getElementById("calculo_filtro_industrial").style = "display: none !important;"
+
+    document.location.reload(true);
 
 }
 

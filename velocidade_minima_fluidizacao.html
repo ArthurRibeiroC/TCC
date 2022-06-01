@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velocidade de minima fluidização aplicando a simplificação de Wen e Yu na equação de Ergun</title>
+    <title>Velocidade de minima fluidização utilizando a equação de Ergun</title>
 
     <link rel="stylesheet" href="fonts/fontawesome/css/all.css" />
     <link rel="stylesheet" href="css/index.css" />
@@ -36,7 +36,7 @@
     </div>
     
     <main class="calculadoras">
-        <h1>Velocidade de minima fluidização aplicando a simplificação de Wen e Yu na equação de Ergun</h1><br/>
+        <h1>Calculadora de velocidade de minima fluidização utilizando a equação de Ergun</h1><br/>
         <p><b>Diâmetro médio das partículas no leito :</b></p>
         <form>
         <input type="number" name="diametro" id="d_particula" value="" placeholder="">
@@ -91,8 +91,87 @@
         <button class="azul" type="submit" NAME="stokes" onClick="leito_fluidizado()"><i class="fa-solid fa-calculator"></i> Calcular</button>
         
         <p><b>Resultados :</b></p>
-        <p>O valor de Re<sub>p</sub> no momento da fluidização é : <a id="Rep_mf"></a></p>
-        <p>A velocidade de mínima fluidização q<sub>mf</sub> é : <a id="q_mf"></a></p>   
+        <div class="resultados" >
+            <h1>Simplificação de Wen e Yu</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p,mf</sub> : </b><a id="Rep_mf_Wen_Yu"></a></p>    
+                <p><b>q<sub>mf</sub> : </b><a id="q_mf_Wen_Yu"></a></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados" >
+            <h1>Simplificação de Richardson</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p,mf</sub> : </b><a id="Rep_mf_Rich"></a></p>    
+                <p><b>q<sub>mf</sub> : </b><a id="q_mf_Rich"></a></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados" >
+            <h1>Simplificação de Saxena e Vogel</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p,mf</sub> : </b><a id="Rep_mf_SV"></a></p>    
+                <p><b>q<sub>mf</sub> : </b><a id="q_mf_SV"></a></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados" >
+            <h1>Simplificação de Babu et al.</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p,mf</sub> : </b><a id="Rep_mf_Babu"></a></p>    
+                <p><b>q<sub>mf</sub> : </b><a id="q_mf_Babu"></a></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados" >
+            <h1>Simplificação de Grace</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p,mf</sub> : </b><a id="Rep_mf_Grace"></a></p>    
+                <p><b>q<sub>mf</sub> : </b><a id="q_mf_Grace"></a></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados" >
+            <h1>Simplificação de Chitester et al.</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p,mf</sub> : </b><a id="Rep_mf_Chi"></a></p>    
+                <p><b>q<sub>mf</sub> : </b><a id="q_mf_Chi"></a></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados" >
+            <h1>Simplificação de Pillai e Raja Rao</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p,mf</sub> : </b><a id="Rep_mf_PRR"></a></p>    
+                <p><b>q<sub>mf</sub> : </b><a id="q_mf_PRR"></a></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados" >
+            <h1>Simplificação de Pillai e Raja Rao</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p,mf</sub> : </b><a id="Rep_mf_Tannous"></a></p>    
+                <p><b>q<sub>mf</sub> : </b><a id="q_mf_Tannous"></a></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados" >
+            <h1>Simplificação de Barbosa et al</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p,mf</sub> : </b><a id="Rep_mf_Barbosa"></a></p>    
+                <p><b>q<sub>mf</sub> : </b><a id="q_mf_Barbosa"></a></a></p>
+            </div>
+        </div>
+        
+        <div class="resultados" >
+            <h1>Simplificação de Subramani, Balaiyya e Miranda</h1>
+            <div class="resultados-corpo">
+                <p><b>Re<sub>p,mf</sub> : </b><a id="Rep_mf_SBM"></a></p>    
+                <p><b>q<sub>mf</sub> : </b><a id="q_mf_SBM"></a></a></p>
+            </div>
+        </div>
+
+
     </main>
 </body>
 

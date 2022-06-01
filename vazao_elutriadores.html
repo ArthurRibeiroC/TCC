@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular a vazão de elutriação</title>
+
+    <link rel="stylesheet" href="fonts/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="shortcut icon" href="images/ufc_ico.ico" />
+    <link href="css/projeto_ciclone.css" type="text/css" rel='stylesheet' />
+
+    <script src="js/elutriador.js"></script>
+    <script src="js/conversoes.js"></script>
+</head>
+
+<body>
+    <div class="menu">
+        <img src="images/logo_UFC_horizontal.svg">
+        
+        <input type="checkbox" id="checkbox-menu">
+        <label class="label-menu" for="checkbox-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <ul>
+            <a>LINK 1</a>
+            <a>LINK 1</a>
+            <a>LINK 1</a> 
+        </ul>
+    </div>
+
+    <main class="calculadoras">
+        <h1>Calcular a vazão de elutriação</h1><br/>
+        <p><b>Diâmetro do elutriador :</b></p>
+        <form>
+        <input type="number" name="diametro" id="D_elutriador" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="D_elutriador_fator" value="" placeholder="0" step="1" class="fator">
+        <select id="D_elutriador_unit">
+            <option value="microm">µm</option>
+            <option value="mm">mm</option>
+            <option value="cm">cm</option>
+            <option value="m">m</option>
+            <option value="in">in</option>
+            <option value="ft">ft</option>
+        </select>            
+        </form>
+
+        <p><b>Velocidade terminal da partícula :</b></p>
+        <form>
+        <input type="number" name="velocidade" id="velocidade" value="" placeholder="" min="6" max="21">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="velocidade_fator" value="" placeholder="0" step="1" class="fator">
+        <select id="velocidade_unit">
+            <option value="m/s">m/s</option>
+            <option value="m/min">m/min</option>
+            <option value="m/h">m/h</option>
+            <option value="ft/s">ft/s</option>
+            <option value="ft/min">ft/min</option>
+            <option value="ft/h">ft/h</option>
+        </select>            
+        </form>
+
+        <button class="azul" type="submit" NAME="calculate" onClick="elutriador()"><i class="fa-solid fa-calculator"></i> Calcular</button>
+        
+        <p><b>Resultados :</b></p>
+        <p>A vazão de elutriação é : <a id="vazao_elutriacao"></a></p>
+
+</main>
+</body>
+
+</html>
