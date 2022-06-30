@@ -116,7 +116,9 @@
 
 #dp_unit,
 #tempo_unit,
-#vol_filtrado_unit {
+#vol_filtrado_unit,
+#vazao_filtrado_unit,
+#vel_ang_unit {
   border-radius: 3px;
   border: 1px solid #aaa;
 }

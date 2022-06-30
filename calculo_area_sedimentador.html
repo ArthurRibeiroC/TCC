@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diâmetro máximo retido em Câmaras de Poeira</title>
+    <title>Calculadora de área de sedimentação para decaimento exponencial</title>
 
     <link rel="stylesheet" href="fonts/fontawesome/css/all.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="shortcut icon" href="images/ufc_ico.ico" />
     <link href="css/projeto_ciclone.css" type="text/css" rel='stylesheet' />
 
-    <script src="js/camara_de_poeira.js"></script>
+    <script src="js/sedimentadores.js"></script>
     <script src="js/conversoes.js"></script>
 
 </head>
@@ -27,19 +27,19 @@
             <span></span>
             <span></span>
         </label>
-
+        
         <ul>
             <a href="index.html"><i class="fa-solid fa-circle-arrow-left"></i>Voltar ao menu</a>
         </ul>
     </div>
 
     <main class="calculadoras">
-        <h1>Diâmetro máximo retido em Câmaras de Poeira</h1><br/>
+        <h1>Calculadora de área de sedimentação para decaimento exponencial</h1><br/>
         <p><b>Vazão de Admissão :</p>
         <form>
         </b><input type="number" id="vazao" value="" placeholder="">
         <span class="prefixo fator">x 10^</span>
-        <input type="number" id="vazao_fator" value="" placeholder="0" step="1" class="fator">
+        <input type="number" id="vazao_fator" value="" placeholder="0" min="0" class="fator">
         <select id="vazao_unit">
             <option value="m³/s">m³/s</option>
             <option value="m³/min">m³/min</option>
@@ -53,48 +53,48 @@
         </select>            
         </form>
 
-        <p><b>Massa específica do fluido :</b></p>
+        <p><b>Concentração do sólido na alimentação :</b></p>
         <form>
-        <input type="number" id="rho_fluido" value="" placeholder="">
+        <input type="number" id="c_solido_alim" value="" placeholder="">
         <span class="prefixo fator">x 10^</span>
-        <input type="number" id="rho_fluido_fator" value="" placeholder="0" step="1" class="fator">
-        <select id="rho_fluido_unit">
+        <input type="number" id="c_solido_alim_fator" value="" placeholder="0" min="0" class="fator">
+        <select id="c_solido_alim_unit">
             <option value="kg/m³">kg/m³</option>
             <option value="kg/L">kg/L</option>
             <option value="g/cm³">g/cm³</option>
         </select>            
         </form>
 
-        <p><b>Viscosidade do fluido :</b></p> 
+        <p><b>Concentração do sólido na lama :</b></p>
         <form>
-        <input type="number" id="viscosidade" value="" placeholder="">
+        <input type="number" id="c_solido_lama" value="" placeholder="">
         <span class="prefixo fator">x 10^</span>
-        <input type="number" id="viscosidade_fator" value="" placeholder="0" step="1" class="fator">
-        <select id="viscosidade_unit">
-            <option value="Pa.s">Pa.s</option>
-            <option value="Poise">Poise (P)</option>
-            <option value="Centipoise">Centipoise (cP)</option>
-        </select>            
-        </form>
-
-        <p><b>Massa específica da partícula :</b></p>
-        <form>
-        <input type="number" id="rho_particula" value="" placeholder="">
-        <span class="prefixo fator">x 10^</span>
-        <input type="number" id="rho_particula_fator" value="" placeholder="0" step="1" class="fator">
-        <select id="rho_particula_unit">
+        <input type="number" id="c_solido_lama_fator" value="" placeholder="0" min="0" class="fator">
+        <select id="c_solido_lama_unit">
             <option value="kg/m³">kg/m³</option>
             <option value="kg/L">kg/L</option>
             <option value="g/cm³">g/cm³</option>
         </select>            
         </form>
 
-        <p><b>Largura da câmara de poeira :</b></p>
+        <p><b>Massa específica do sólido :</b></p>
         <form>
-        <input type="number" id="B_camara" value="" placeholder="">
+        <input type="number" id="rho_solido" value="" placeholder="">
         <span class="prefixo fator">x 10^</span>
-        <input type="number" id="B_camara_fator" value="" placeholder="0" step="1" class="fator">
-        <select id="B_camara_unit">
+        <input type="number" id="rho_solido_fator" value="" placeholder="0" min="0" class="fator">
+        <select id="rho_solido_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>            
+        </form>
+
+        <p><b>Altura inicial da lama :</b></p>
+        <form>
+        <input type="number" id="z0_lama" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="z0_lama_fator" value="" placeholder="0" min="0" class="fator">
+        <select id="z0_lama_unit">
             <option value="m">m</option>
             <option value="cm">cm</option>
             <option value="mm">mm</option>
@@ -103,24 +103,33 @@
         </select>            
         </form>
 
-        <p><b>Comprimento da câmara de poeira :</b></p>
+        <p><b>Tempo máximo da sedimentação :</b></p>
         <form>
-        <input type="number" id="L_camara" value="" placeholder="">
+        <input type="number" id="tempo_sedimentacao" value="" placeholder="">
         <span class="prefixo fator">x 10^</span>
-        <input type="number" id="L_camara_fator" value="" placeholder="0" step="1" class="fator">
-        <select id="L_camara_unit">
-            <option value="m">m</option>
-            <option value="cm">cm</option>
-            <option value="mm">mm</option>
-            <option value="in">in</option>
-            <option value="ft">ft</option>
+        <input type="number" id="tempo_sedimentacao_fator" value="" placeholder="0" min="0" class="fator">
+        <select id="tempo_sedimentacao_unit">
+            <option value="s">s</option>
+            <option value="min">min</option>
+            <option value="h">h</option>
         </select>            
         </form>
 
-        <button class="azul" type="submit" NAME="calculate" onClick="camara_de_poeira()"><i class="fa-solid fa-calculator"></i> Calcular</button>
+        <p><b>Expoente do decaimento :</b></p>
+        <form>
+        <input type="number" step="1" id="expoente" value="" placeholder=""> 
+        <select id="expoente_unit">
+            <option value="1/s">1/s</option>
+            <option value="1/min">1/min</option>
+            <option value="1/h">1/h</option>
+        </select>    
+        </form>
+
+        <button class="azul" type="submit" NAME="calculate" onClick="areaSedimentador()"><i class="fa-solid fa-calculator"></i> Calcular</button>
+        
         <p><b>Resultados :</b></p>
-        <p>O diâmetro máximo de partícula retido para os parâmetros fornecidos é : <a id="d_maximo"></a></p>
-
+        <p>A área do sedimentador é : <a id="area_sedimentador"></a></p>
+        <p>O diâmetro do sedimentador é : <a id="diametro_sedimentador"></a></p>
     </main>
 
 </body>

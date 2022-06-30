@@ -17,7 +17,6 @@ function converter_diametro(diametro, unidade) {
 // CONVERTER A VAZÃO DE ENTRADA
 function converter_Vazao() {
     let Vazao = document.getElementById("vazao").value;
-    // Vazao = Vazao.replace(",", ".");
     Vazao = potenciaDe10(Vazao, document.getElementById("vazao_fator").value)
 
     let Vazao_unit = document.getElementById("vazao_unit").value;

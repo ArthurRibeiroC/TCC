@@ -126,7 +126,7 @@ p i {
 .principal p:hover {
     cursor: pointer;
     transition: 0.3s;
-    background-color: white;
+    /* background-color: white; */
     font-weight: bold;
 }
 
@@ -197,7 +197,7 @@ main input, .prefixo {
     padding: 10px 10px 0px 10px;
 }
 
-#n_iteracoes, #eficiencia_desejada {
+#n_iteracoes, #eficiencia_desejada, #angulo_imerso, #angulo_imerso2, #fracao_solidos, #fracao_solidos2 {
     border-radius: 3px;
 }
 
@@ -277,6 +277,11 @@ main select {
 .menu ul a {
     display: block;
     line-height: 50px;
+    color: #666;
+}
+
+.menu ul i {
+    margin-right: 10px;
 }
 
 #checkbox-menu {
