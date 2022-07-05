@@ -53,6 +53,9 @@ function tabelaFiltroRotativo() {
         case 'm³/s': Q_fator = 1; break;
         case 'm³/min': Q_fator = 1 / 60; break;
         case 'm³/h': Q_fator = 1 / 3600; break;
+        case 'cm³/s': Q_fator = 1 / 1000000; break;
+        case 'cm³/min': Q_fator = 1 / 1000000 / 60; break;
+        case 'cm³/h': Q_fator = 1 / 1000000 / 3600; break;
         case 'L/s': Q_fator = 1 / 1000; break;
         case 'L/min': Q_fator = 1 / 60000; break;
         case 'L/h': Q_fator = 1 / 3600000; break;
@@ -222,7 +225,6 @@ function calcularCapacidadeFiltroRotativo() {
     } else if (Q2 > 0) {
         capacidade_filtro = Q2;
     };
-
     capacidade_filtro = capacidade_filtro / area;
 
     // RETORNA A CAPACIDADE DO FILTRO ROTATIVO
