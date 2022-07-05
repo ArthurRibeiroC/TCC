@@ -223,8 +223,10 @@ function calcularCapacidadeFiltroRotativo() {
         capacidade_filtro = Q2;
     };
 
+    capacidade_filtro = capacidade_filtro / area;
+
     // RETORNA A CAPACIDADE DO FILTRO ROTATIVO
-    document.getElementById("capacidade_filtro").innerHTML = capacidade_filtro.toExponential(4).split("e")[0] + "x10<sup>" + capacidade_filtro.toExponential(4).split("e")[1] + "</sup> m³/s";
+    document.getElementById("capacidade_filtro").innerHTML = capacidade_filtro.toExponential(4).split("e")[0] + "x10<sup>" + capacidade_filtro.toExponential(4).split("e")[1] + "</sup> m³/m².s";
     document.getElementById("resultados_filtro2").style = "display: block;";
 }
 
