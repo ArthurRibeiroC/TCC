@@ -25,6 +25,9 @@ function converter_Vazao() {
         case 'm³/s': Vazao = Vazao; break;
         case 'm³/min': Vazao = Vazao / 60; break;
         case 'm³/h': Vazao = Vazao / 3600; break;
+        case 'cm³/s': Vazao = Vazao / 1000000; break;
+        case 'cm³/min': Vazao = Vazao / 1000000 / 60; break;
+        case 'cm³/h': Vazao = Vazao / 1000000 / 3600; break;
         case 'L/s': Vazao = Vazao / 1000; break;
         case 'L/min': Vazao = Vazao / 60000; break;
         case 'L/h': Vazao = Vazao / 3600000; break;
