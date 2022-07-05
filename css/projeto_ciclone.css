@@ -54,7 +54,8 @@
 #composicao_fundo,
 #composicao_topo,
 #dp_perc,
-#dados_filtro {
+#dados_filtro,
+#dados_sedimentador {
   margin-bottom: 20px;
   box-sizing: border-box;
   border-radius: 3px;
@@ -65,7 +66,8 @@
 #composicao_fundo table,
 #composicao_topo table,
 #dp_perc,
-#dados_filtro {
+#dados_filtro,
+#dados_sedimentador {
   text-align: center;
   overflow: hidden;
   width: 100%;
@@ -76,7 +78,8 @@
 #composicao_fundo table th,
 #composicao_topo table th,
 #dp_perc th,
-#dados_filtro th {
+#dados_filtro th,
+#dados_sedimentador th {
   padding: 10px 20px !important;
   font-weight: bold;
 }
@@ -84,7 +87,8 @@
 #dimensoes table tr:nth-of-type(2) td,
 #composicao_fundo table tr:nth-of-type(2) td,
 #composicao_topo table tr:nth-of-type(2) td,
-#dados_filtro table tr:nth-of-type(2) td {
+#dados_filtro table tr:nth-of-type(2) td,
+#dados_sedimentador table tr:nth-of-type(2) td{
   padding: 0px 20px 10px 20px !important;
   font-weight: bold;
 }
@@ -93,7 +97,8 @@
 #composicao_fundo table tr:not(:nth-of-type(1), :nth-of-type(2)) td,
 #composicao_topo table tr:not(:nth-of-type(1), :nth-of-type(2)) td,
 #dp_perc input,
-#dados_filtro input {
+#dados_filtro input,
+#dados_sedimentador input {
   background: white;
   border: 0px;
   border-radius: 3px;
@@ -104,12 +109,14 @@
 }
 
 #dp_perc td,
-#dados_filtro td {
+#dados_filtro td,
+#dados_sedimentador td {
   width: 50%;
 }
 
 #dp_perc input,
-#dados_filtro input {
+#dados_filtro input,
+#dados_sedimentador input {
   width: 100%;
   margin: 0px;
 }
@@ -118,7 +125,8 @@
 #tempo_unit,
 #vol_filtrado_unit,
 #vazao_filtrado_unit,
-#vel_ang_unit {
+#vel_ang_unit,
+#altura_interface_unit {
   border-radius: 3px;
   border: 1px solid #aaa;
 }

@@ -216,9 +216,10 @@ function calcularCapacidadeFiltroRotativo() {
     // CALCULA OS COEFICIENTES DA EQUAÇÃO DE SEGUNDO GRAU
     let a = alpha * concentracao * viscosidade / (2 * Math.pow(area, 2) * delta_P * vel_ang2);
     let b = viscosidade * Rm / (area * delta_P);
+    let delta = Math.pow(b, 2) + 4 * a *I;
 
-    let Q1 = (-b + Math.sqrt(Math.pow(b, 2) + 4 * a * I)) / (2 * a);
-    let Q2 = -(b + Math.sqrt(Math.pow(b, 2) + 4 * a * I)) / (2 * a);
+    let Q1 = (-b + Math.sqrt(delta))/(2 * a);
+    let Q2 = (-b - Math.sqrt(delta))/(2 * a);
 
     if (Q1 > 0) {
         capacidade_filtro = Q1;

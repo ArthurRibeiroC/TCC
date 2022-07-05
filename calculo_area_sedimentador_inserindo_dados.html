@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de área de sedimentação usando o método de Kynch</title>
+
+    <link rel="stylesheet" href="fonts/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="shortcut icon" href="images/ufc_ico.ico" />
+    <link href="css/projeto_ciclone.css" type="text/css" rel='stylesheet' />
+
+    <script src="js/sedimentadores.js"></script>
+    <script src="js/calculadora_de_ciclones.js"></script>
+    <script src="js/conversoes.js"></script>
+
+</head>
+
+<body>
+    <div class="menu">
+        <img src="images/logo_UFC_horizontal.svg">
+
+        <input type="checkbox" id="checkbox-menu">
+        <label class="label-menu" for="checkbox-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        
+        <ul>
+            <a href="index.html"><i class="fa-solid fa-circle-arrow-left"></i>Voltar ao menu</a>
+        </ul>
+    </div>
+
+    <main class="calculadoras">
+        <h1>Calculadora de área de sedimentação usando o método de Kynch</h1><br/>
+        <p><b>Vazão de Admissão :</p>
+        <form>
+        </b><input type="number" id="vazao" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="vazao_fator" value="" placeholder="0" min="0" class="fator">
+        <select id="vazao_unit">
+            <option value="m³/s">m³/s</option>
+            <option value="m³/min">m³/min</option>
+            <option value="m³/h">m³/h</option>
+            <option value="cm³/s">cm³/s</option>
+            <option value="cm³/min">cm³/min</option>
+            <option value="cm³/h">cm³/h</option>
+            <option value="L/s">L/s</option>
+            <option value="L/min">L/min</option>
+            <option value="L/h">L/h</option>
+            <option value="ft³/s">ft³/s</option>
+            <option value="ft³/min">ft³/min</option>
+            <option value="ft³/h">ft³/h</option>
+        </select>            
+        </form>
+
+        <p><b>Concentração do sólido na alimentação :</b></p>
+        <form>
+        <input type="number" id="c_solido_alim" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="c_solido_alim_fator" value="" placeholder="0" min="0" class="fator">
+        <select id="c_solido_alim_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>            
+        </form>
+
+        <p><b>Concentração do sólido na lama :</b></p>
+        <form>
+        <input type="number" id="c_solido_lama" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="c_solido_lama_fator" value="" placeholder="0" min="0" class="fator">
+        <select id="c_solido_lama_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>            
+        </form>
+
+        <p><b>Massa específica do sólido :</b></p>
+        <form>
+        <input type="number" id="rho_solido" value="" placeholder="">
+        <span class="prefixo fator">x 10^</span>
+        <input type="number" id="rho_solido_fator" value="" placeholder="0" min="0" class="fator">
+        <select id="rho_solido_unit">
+            <option value="kg/m³">kg/m³</option>
+            <option value="kg/L">kg/L</option>
+            <option value="g/cm³">g/cm³</option>
+        </select>            
+        </form>
+
+        <p><b>Dados de volume de filtrado : </b></p>
+
+        <button class="verde esquerda" type="submit" onclick="inserirLinhaTabela('dados_sedimentador')"><i class="fa fa-plus-square" aria-hidden="true"></i>
+            Inserir Linha</button>
+        <button class="vermelho direita" type="submit" onclick="RemoverLinhaTabela('dados_sedimentador')"><i class="fa fa-minus-square" aria-hidden="true"></i>
+            Remover Linha</button>
+
+        <p>
+        <table id="dados_sedimentador" >
+            <tr>
+                <td>
+                    <span>Tempo de sedimentação</span>
+                    <select id="tempo_unit">
+                        <option value="s">s</option>
+                        <option value="min">min</option>
+                        <option value="h">h</option>
+                    </select>
+                </td>
+                <td>
+                    <span>Altura da interface</span>
+                    <select id="altura_interface_unit">
+                        <option value="m">m</option>
+                        <option value="cm">cm</option>
+                        <option value="mm">mm</option>
+                        <option value="in">in</option>
+                        <option value="ft">ft</option>
+                    </select> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number">
+                </td>
+                <td>
+                    <input type="number">
+                </td>
+            </tr>
+        </table>
+        </p>
+
+        <button class="azul esquerda" type="submit" NAME="calculate" onClick="calcularSedimentadorComDados()"><i class="fa-solid fa-calculator"></i> Calcular</button>
+        <button class="cinza direita" type="submit" NAME="erase" onClick="erase()"><i class="fa-solid fa-eraser"></i> Apagar Tudo</button>
+
+        <p><b>Resultados :</b></p>
+        <p>A área do sedimentador é : <a id="area_sedimentador"></a></p>
+        <p>O diâmetro do sedimentador é : <a id="diametro_sedimentador"></a></p>
+    </main>
+
+</body>
+
+</html>
